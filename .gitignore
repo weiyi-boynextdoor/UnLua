@@ -1,5 +1,6 @@
 **/.DS_Store
 .vs/
+.vsconfig
 Binaries/
 Build/
 DerivedDataCache/
@@ -21,3 +22,4 @@ IOS/
 /Plugins/Developer/RiderLink
 /Benchmark
 /Plugins/UnLua/Source/UnLuaDefaultParamCollectorUbtPlugin/obj
+/Plugins/UnLua/Source/UnLuaDefaultParamCollectorUbtPlugin/*.csproj.props
