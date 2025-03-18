@@ -57,6 +57,17 @@ namespace UnLuaDefaultParamCollectorUbtPlugin
 
         private void Generate()
         {
+#if UE_5_5_OR_LATER
+            foreach (UhtModule module in Session.Modules)
+            {
+                if (module.Module.ModuleType != UHTModuleType.EngineRuntime && module.Module.ModuleType != UHTModuleType.GameRuntime)
+                {
+                    continue;
+                }
+                UhtPackage package = module.ScriptPackage;
+                QueueClassExports(package, package);
+            }
+#else
             foreach (UhtPackage package in Session.Packages)
             {
                 var moduleType = package.Module.ModuleType;
@@ -67,6 +78,7 @@ namespace UnLuaDefaultParamCollectorUbtPlugin
                 }
                 QueueClassExports(package, package);
             }
+#endif
             
             // Wait for all the classes to export
             Finish();
